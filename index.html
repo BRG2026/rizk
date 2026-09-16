@@ -299,6 +299,42 @@
   .contact-card-audience { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
   .contact-card h3 { font-family: var(--font-serif); font-size: 21px; font-weight: 700; color: var(--green); margin-bottom: 10px; line-height: 1.25; }
   .contact-card p { font-size: 13px; color: var(--ink); opacity: 0.75; line-height: 1.6; }
+  .contact-cta {
+    background: var(--bg-a);
+    border: 1.5px solid var(--gold);
+    padding: 30px 32px;
+    text-align: center;
+  }
+  .contact-cta p { font-family: var(--font-serif); font-size: 21px; color: var(--brown); margin-bottom: 14px; }
+  .contact-cta button {
+    position: relative;
+    display: inline-block;
+    background: none;
+    border: none;
+    border-bottom: 1.5px solid var(--gold);
+    cursor: pointer;
+    color: var(--green);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 0 0 3px;
+  }
+  .contact-cta button:hover { color: var(--green); }
+  .contact-cta button:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  .contact-cta button .label { display: inline-block; transition: opacity 0.15s ease; }
+  .contact-cta button .email {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+  .contact-cta button:hover .label { opacity: 0; }
+  .contact-cta button:hover .email { opacity: 1; }
   .contact-email-row { padding-top: 32px; border-top: 1px solid rgba(28,28,28,0.12); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .contact-email-label { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--ink); opacity: 0.6; }
   .contact-email { font-family: var(--font-serif); font-size: 22px; color: var(--brown); text-decoration: none; }
@@ -621,6 +657,12 @@
         <p>Replicate the Riziki model on your own land with the Orpheus 1 mobile pyrolysis kiln.</p>
       </a>
     </div>
+    <div class="contact-cta">
+      <p>Interested in our solutions?</p>
+      <button type="button" onclick="copyEmail(this)">
+        <span class="label">Email us here</span><span class="email">info@nbs-ea.com</span>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -667,6 +709,15 @@ function toggleMobile() {
 function closeMobile() {
   document.getElementById('mobileMenu').classList.remove('active');
   document.querySelector('.mobile-toggle').setAttribute('aria-expanded', 'false');
+}
+function copyEmail(btn) {
+  var email = 'info@nbs-ea.com';
+  var label = btn.querySelector('.label');
+  var original = label.textContent;
+  navigator.clipboard.writeText(email).then(function () {
+    label.textContent = 'Copied!';
+    setTimeout(function () { label.textContent = original; }, 1600);
+  });
 }
 </script>
 
