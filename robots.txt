@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.nbs-ea.com/sitemap.xml
+Sitemap: https://nbs-ea.com/sitemap.xml
